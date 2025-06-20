@@ -1,0 +1,15 @@
+import maya.cmds as cmds
+
+def create_poly_gui():
+	window_name = "BasicPolyModelingUI"
+	if cmds.window(window_name, exists=True):
+		cmds.deleteUI(window = True)
+	cmds.window(window_name, title ="Basic Poly Modeling", widthHeight =(100, 100))
+	cmds.columnLayout(adjustableColumn=True)
+	cmds.button(label="Create Cube", command=lambda x: cmds.polyCube())
+	cmds.button(label="Create Cylinder", command=lambda x: cmds.polyCylinder())
+	cmds.button(label="Create Sphere", command=lambda x: cmds.polySphere())
+	cmds.button(label="Create Plane", command=lambda x: cmds.polyPlane())
+	cmds.showWindow(window_name)
+	
+create_poly_gui()
