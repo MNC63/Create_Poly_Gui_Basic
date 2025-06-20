@@ -1,15 +1,19 @@
 import maya.cmds as cmds
 
-def create_poly_gui():
-	window_name = "BasicPolyModelingUI"
-	if cmds.window(window_name, exists=True):
-		cmds.deleteUI(window = True)
-	cmds.window(window_name, title ="Basic Poly Modeling", widthHeight =(100, 100))
-	cmds.columnLayout(adjustableColumn=True)
-	cmds.button(label="Create Cube", command=lambda x: cmds.polyCube())
-	cmds.button(label="Create Cylinder", command=lambda x: cmds.polyCylinder())
-	cmds.button(label="Create Sphere", command=lambda x: cmds.polySphere())
-	cmds.button(label="Create Plane", command=lambda x: cmds.polyPlane())
-	cmds.showWindow(window_name)
-	
-create_poly_gui()
+class BasicPolyModelingUI:
+		def __init__(self):
+			self.window_name = "BasicPolyModelingUI"
+		def create(self):
+			if cmds.window(self.window_name, exists = True)
+				cmds.deleteUI(self.window_name, window = True)
+			cmds.window(self.window_name, title = "Basic Poly Modeling", widthHeight=(200,100))
+			
+			cmds.comlumnLayout(adjustableColumn=True)
+			cmds.button(label="Create Cube", command=lambda x: cmds.polyCube())
+			cmds.button(label="Create Cylinder", command=lambda x: cmds.polyCylinder())
+			cmds.button(label="Create Sphere", command = lambda x: cmds.polySphere())
+			cmds.button(label="Create Plane", command = lambda x: cmds.polyPlane())
+			cmds.showWindow(self.window_name)
+			
+ui = BasicPolyModelingUI()
+ui.create()
